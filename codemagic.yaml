@@ -8,11 +8,15 @@ workflows:
       - name: Generate Android platform files
         script: |
           flutter create . --platforms=android --org com.mylittlediary
+      - name: Force compileSdk to 36
+        script: |
           if [ -f android/app/build.gradle.kts ]; then
-            sed -i '' 's/compileSdk = flutter.compileSdkVersion/compileSdk = 36/' android/app/build.gradle.kts
+            sed -i '' 's/compileSdk[[:space:]]*=.*/compileSdk = 36/' android/app/build.gradle.kts
+            cat android/app/build.gradle.kts | grep compileSdk
           fi
           if [ -f android/app/build.gradle ]; then
-            sed -i '' 's/compileSdkVersion flutter.compileSdkVersion/compileSdkVersion 36/' android/app/build.gradle
+            sed -i '' 's/compileSdkVersion.*/compileSdkVersion 36/' android/app/build.gradle
+            cat android/app/build.gradle | grep compileSdk
           fi
       - name: Get Flutter packages
         script: |
