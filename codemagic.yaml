@@ -5,7 +5,7 @@ workflows:
     environment:
       flutter: stable
     scripts:
-      - name:- name: Generate Android platform files
+      - name: Generate Android platform files
         script: |
           flutter create . --platforms=android --org com.mylittlediary
           if [ -f android/app/build.gradle.kts ]; then
