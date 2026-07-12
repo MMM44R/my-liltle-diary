@@ -27,7 +27,7 @@ dependencies:
 
   # Media & files
   image_picker: ^1.1.2
-  file_picker: ^8.0.3
+  file_picker: ^8.1.2
   share_plus: ^9.0.0
 
   # State management
